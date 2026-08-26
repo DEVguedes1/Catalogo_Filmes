@@ -137,5 +137,3 @@ implementação das operações CRUD com JavaScript.
 4. Utilize o formulário para cadastrar e gerenciar os filmes.
 
 ---
-**Projeto acadêmico — Desenvolvimento Web**
->>>>>>> c0019eb0d7a5348db2d17a62e93aeaab2e0dcb74
