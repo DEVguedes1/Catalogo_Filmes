@@ -52,25 +52,45 @@ function renderizarFilmes() {
 
 document.addEventListener('DOMContentLoaded', () => {
     gerenciador.carregarDoLocalStorage();
-    renderizarFilmes();
+    //renderizarFilmes();
 });
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const titulo = inputTitulo.value;
-    const genero = inputGenero.value;
-    const estudio = inputEstudio.value;
+    const titulo = inputTitulo.value.trim();
+    const genero = inputGenero.value.trim();
+    const estudio = inputEstudio.value.trim();
     const anoDeLancamento = parseInt(inputAnoDeLancamento.value);
     const duracao = parseInt(inputDuracao.value);
     const nota = parseFloat(inputNota.value);
+
+    if (titulo === "" || 
+        genero === "" || 
+        estudio === "" || 
+        anoDeLancamento <1888 ||
+        anoDeLancamento > 2030 || 
+        duracao < 1 ||
+        nota < 0 ||
+        nota > 10 ||
+        isNaN(duracao) || 
+        isNaN(nota)) {
+            alert("Por favor, preencha todos os campos corretamente.");
+            return;
+    }
 
     const novoFilme = new Filme(titulo, genero, estudio, anoDeLancamento, duracao, nota);
 
     gerenciador.adicionarFilme(novoFilme);
     gerenciador.salvarNoLocalStorage();
-      
+    
+    console.log("Filme cadastrado:");
+    console.log(novoFilme);
+
+    console.log("Lista atual:");
+    console.log(gerenciador.filmes);
+
     form.reset();
-    renderizarFilmes();
+    //renderizarFilmes();
 
 });

@@ -57,9 +57,11 @@ class GerenciadorDeFilmes{
     }
 
     adicionarFilme(filme){
-        filme instanceof Filme ? 
-        this.#filmes.push(filme) : 
+        if (filme instanceof Filme) {
+        this.#filmes.push(filme)
+        }else{
         console.log("O objeto não é uma instância da classe Filme.");
+        }
     }
 
     listarFilmes(){

@@ -1,69 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineLog - Catálogo de Filmes</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>CineLog</h1>
-            <p>Seu catálogo pessoal de cinema</p>
-        </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <main>
-            <section class="registration-form">
-                <h2>Cadastrar Novo Filme</h2>
-                <form id="movie-form">
-                    <div class="form-group">
-                        <label for="titulo">Título</label>
-                        <input type="text" id="titulo" required placeholder="Ex: Inception">
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="genero">Gênero</label>
-                            <input type="text" id="genero" required placeholder="Ex: Ficção Científica">
-                        </div>
-                        <div class="form-group">
-                            <label for="estudio">Estúdio</label>
-                            <input type="text" id="estudio" required placeholder="Ex: Warner Bros.">
-                        </div>
-                    </div>
+    <title>CineLog - Home</title>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="ano">Ano</label>
-                            <input type="number" id="ano" required min="1888" max="2030">
-                        </div>
-                        <div class="form-group">
-                            <label for="duracao">Duração (min)</label>
-                            <input type="number" id="duracao" required min="1">
-                        </div>
-                        <div class="form-group">
-                            <label for="nota">Nota (0-10)</label>
-                            <input type="number" id="nota" required min="0" max="10" step="0.1">
-                        </div>
-                    </div>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-                    <button type="submit" id="btn-save">Salvar Filme</button>
-                </form>
-            </section>
+  <body>
+    <header class="topbar">
+      <button class="menu-button" id="menu-button">☰</button>
 
-            <section class="movie-list-section">
-                <h2>Meus Filmes</h2>
-                <div id="movie-list" class="movie-grid">
-                    <!-- Filmes serão injetados aqui -->
-                </div>
-            </section>
-        </main>
-    </div>
+      <a href="index.html" class="logo"> CineLog </a>
+    </header>
 
-    <!-- Scripts -->
-    <script src="Filme.js"></script>
-    <script src="GerenciadorDeFilmes.js"></script>
-    <script src="app.js"></script>
-</body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span>CineLog</span>
+      </div>
+
+      <nav>
+        <a href="index.html" class="nav-link">
+          🏠
+          <span>Home</span>
+        </a>
+
+        <a href="cadastro.html" class="nav-link">
+          ➕
+          <span>Cadastrar</span>
+        </a>
+
+        <a href="#" class="nav-link">
+          ✏️
+          <span>Editar</span>
+        </a>
+
+        <div class="separator"></div>
+
+        <a href="#" class="nav-link">
+          ⭐
+          <span>Favoritos</span>
+        </a>
+
+        <a href="#" class="nav-link">
+          🎬
+          <span>Filmes</span>
+        </a>
+
+        <a href="#" class="nav-link">
+          ℹ️
+          <span>Sobre</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="home-header">
+        <div>
+          <h1>Meus Filmes</h1>
+
+          <p>Seu catálogo pessoal de cinema.</p>
+        </div>
+
+        <a href="cadastro.html" class="btn-primary"> + Cadastrar Filme </a>
+      </section>
+
+      <!--
+            A listagem dos filmes será implementada posteriormente.
+            Os cards serão adicionados aqui.
+        -->
+
+      <section id="movie-list" class="movie-grid"></section>
+    </main>
+
+    <script>
+      const menuButton = document.getElementById("menu-button");
+      const sidebar = document.getElementById("sidebar");
+
+      menuButton.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+      });
+    </script>
+  </body>
 </html>
