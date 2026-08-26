@@ -69,7 +69,16 @@ class Filme{
         this.#nota = value;
     }
 
-    
+    toJSON() {
+        return {
+            titulo: this.#titulo,
+            genero: this.#genero,
+            estudio: this.#estudio,
+            anoDeLancamento: this.#anoDeLancamento,
+            duracao: this.#duracao,
+            nota: this.#nota
+        };
+    }
 
 }
 

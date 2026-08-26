@@ -1,3 +1,20 @@
+/**
+ * GerenciadorDeFilmes
+ * 
+ * Esta classe é responsável por gerenciar uma lista de instâncias da classe Filme.
+ * 
+ * Métodos de LocalStorage:
+ * - salvarNoLocalStorage(): Serializa o array de filmes em JSON e o armazena no 
+ *   localStorage do navegador sob a chave "gerenciadorDeFilmes".
+ * - carregarDoLocalStorage(): Recupera a string JSON do localStorage, reconstrói 
+ *   as instâncias da classe Filme e as adiciona ao gerenciador.
+ * 
+ * Exemplo de uso:
+ * const gerenciador = new GerenciadorDeFilmes();
+ * gerenciador.carregarDoLocalStorage(); // Carrega dados salvos anteriormente
+ * // ... adicionar filmes ...
+ * gerenciador.salvarNoLocalStorage(); // Persiste as alterações
+ */
 class GerenciadorDeFilmes{
     
     #filmes = [];
