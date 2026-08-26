@@ -128,12 +128,4 @@ O objetivo do projeto é aplicar na prática os conceitos de desenvolvimento web
 4. Utilize o formulário para cadastrar e gerenciar os filmes.
 
 implementação das operações CRUD com JavaScript.
-
-## 📌 Como executar
-
-1. Baixe ou clone o projeto.
-2. Abra a pasta no VS Code ou outro editor.
-3. Abra o arquivo `index.html` no navegador.
-4. Utilize o formulário para cadastrar e gerenciar os filmes.
-
 ---
