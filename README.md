@@ -127,5 +127,3 @@ O objetivo do projeto é aplicar na prática os conceitos de desenvolvimento web
 3. Abra o arquivo `index.html` no navegador.
 4. Utilize o formulário para cadastrar e gerenciar os filmes.
 
-implementação das operações CRUD com JavaScript.
----
