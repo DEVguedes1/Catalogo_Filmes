@@ -22,32 +22,7 @@ const inputNota = document.getElementById("nota");
 const btnAdicionar = document.getElementById("btn-adicionar");
 
 function renderizarFilmes() {
-    movieListContainer.innerHTML = '';
-    gerenciador.filmes.forEach((filme, index) => {
-        const filmeDiv = document.createElement('div');
-        filmeDiv.classList.add('movie-card');
-        filmeDiv.innerHTML = `
-            <h3>${filme.titulo}</h3>
-            <p>Gênero: ${filme.genero}</p>
-            <p>Estúdio: ${filme.estudio}</p>
-            <p>Ano de Lançamento: ${filme.anoDeLancamento}</p>
-            <p>Duração: ${filme.duracao} minutos</p>
-            <p>Nota: ${filme.nota}</p>
-            <button class="btn-remover" data-index="${index}">Remover</button>
-        `;
-        movieListContainer.appendChild(filmeDiv);
-    });
-
-    const btnRemover = document.querySelectorAll('.btn-remover');
-    btnRemover.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const index = event.target.getAttribute('data-index');
-            gerenciador.filmes.splice(index, 1);
-            gerenciador.salvarNoLocalStorage();
-            renderizarFilmes();
-        }
-        );
-    });
+ // 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
