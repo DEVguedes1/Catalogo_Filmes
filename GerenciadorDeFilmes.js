@@ -61,5 +61,8 @@ class GerenciadorDeFilmes{
         this.#filmes.push(filme) : 
         console.log("O objeto não é uma instância da classe Filme.");
     }
+
+    listarFilmes(){
+    }
     
 }
