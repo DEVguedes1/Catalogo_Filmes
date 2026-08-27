@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CineLog - Editar filmes</title>
+
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+   <header class="topbar">
+      <button class="menu-button" id="menu-button">☰</button>
+      
+      <a href="index.html" class="logo">CineLog</a>
+
+   </header>
+
+   <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-header">
+         <span>CineLog</span>
+      </div>
+
+      <nav>
+
+         <a href="index.html" class="nav-link">
+            🏠
+            <span>Home</span>
+         </a>
+
+         <a href="cadastro.html" class="nav-link">
+            ➕
+            <span>Cadastrar</span>
+         </a>
+
+         <a href="editar.html" class="nav-link active">
+            ✏️
+            <span>Editar</span>
+         </a>
+
+      </nav>
+      
+   </aside>
+
+   <main class="main-content">
+
+      <section class="page-header">
+
+         <div>
+            <h1>Editar Filme</h1>
+            <p>Altere as informações do filme selecionado</p>
+         </div>
+
+      </section>
+
+      <section class="registration-form">
+
+         <form id="edit-form">
+
+            <div class="form-group">
+
+               <label for="titulo">Título</label>
+               <input 
+                  type="text"
+                  id="titulo"
+                  placeholder="Titulo do filme"
+                  required
+               >
+            </div>
+
+            <div class="form-group">
+
+               <label for="genero">Gênero</label>
+               <input 
+                  type="text"
+                  id="genero"
+                  placeholder="Genero do filme"
+                  required
+               >
+            </div>
+
+            <div class="form-group">
+
+               <label for="estudio">Estudio</label>
+               <input  
+                  type="text"
+                  id="estudio"
+                  placeholder="Estudio do filme"
+                  required
+               >
+            </div>
+
+            <div class="form-group">
+               <label for="ano">Ano de Lançamento</label>
+               <input 
+                  type="number"
+                  id="ano"
+                  placeholder="Ano de lançamento"
+                  required
+               >
+            </div>
+
+            <div class="form-group">
+               <label for="duracao">Duração</label>
+               <input 
+                  type="number"
+                  id="duracao"
+                  placeholder="Duração em minutos do filme"
+                  required
+               >
+            </div>
+
+            <div class="form-group">
+               <label for="nota">Nota</label>
+               <input 
+                  type="number"
+                  id="nota"
+                  placeholder="Nota do filme"
+                  required
+               >
+            </div>
+
+            <button type="submit" class="btn-primary">
+               Salvar Alterações
+            </button>
+         </form>
+
+      </section>
+
+   </main>
+
+</body>
+</html>
