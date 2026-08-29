@@ -420,9 +420,18 @@ input:focus {
 .movie-card h3 {
   color: var(--accent);
 
+  margin-top: 0;
   margin-bottom: 12px;
 }
-
+.movie-card p {
+  margin: 6px 0;
+}
+.movie-rating {
+  font-weight: bold;
+}
+.movie-card:hover {
+  transform: translateY(-3px);
+}
 /* =========================
    RESPONSIVIDADE
 ========================= */
