@@ -56,7 +56,13 @@
       </section>
 
       <section class="registration-form">
+         <div class="form-group">
+            <label for="filme-select">Selecione o filme</label>
 
+            <select id="filme-select">
+               <option value="">Escolha um filme</option>
+            </select>
+         </div>
          <form id="edit-form">
 
             <div class="form-group">
@@ -65,7 +71,7 @@
                <input 
                   type="text"
                   id="titulo"
-                  placeholder="Titulo do filme"
+                  placeholder="Título do filme"
                   required
                >
             </div>
@@ -76,7 +82,7 @@
                <input 
                   type="text"
                   id="genero"
-                  placeholder="Genero do filme"
+                  placeholder="Gênero do filme"
                   required
                >
             </div>
@@ -118,6 +124,7 @@
                   type="number"
                   id="nota"
                   placeholder="Nota do filme"
+                  step="0.1"
                   required
                >
             </div>
@@ -131,5 +138,17 @@
 
    </main>
 
+   <script src="Filme.js"></script>
+   <script src="GerenciadorDeFilmes.js"></script>
+   <script src="editar.js"></script>
+   <script>
+      const menuButton = document.getElementById("menu-button");
+      const sidebar = document.getElementById("sidebar")
+
+      menuButton.addEventListener ("click", () => {
+         sidebar.classList.toggle("active");
+
+      });
+   </script>
 </body>
 </html>
