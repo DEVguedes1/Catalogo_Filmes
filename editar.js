@@ -36,7 +36,7 @@ function preencherFormulario(filme) {
     genero.value = filme.genero;
     estudio.value = filme.estudio;
     ano.value = filme.anoDeLancamento;
-    duracao.value = filme.duracao;
+    duracao.value = Filme.formatarDuracaoEmTexto(filme.duracao).replace("h ", ":").replace("m", "").trim();
     nota.value = filme.nota;
 }
 
@@ -54,12 +54,14 @@ function salvarAlteracaoDoFilme() {
         return;
     }
 
+    const duracaoEmMinutos = Filme.parseDuracaoEmMinutos(duracao.value);
+
     const filmeAtualizado = {
         titulo: titulo.value.trim(),
         genero: genero.value.trim(),
         estudio: estudio.value.trim(),
         anoDeLancamento: Number.parseInt(ano.value, 10),
-        duracao: Number.parseInt(duracao.value, 10),
+        duracao: duracaoEmMinutos,
         nota: Number.parseFloat(nota.value),
     };
 

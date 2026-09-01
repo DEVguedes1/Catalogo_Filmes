@@ -16,6 +16,8 @@ function renderizarFilmes() {
         const filmeElement = document.createElement("article");
         filmeElement.classList.add("movie-card");
 
+        const duracaoFormatada = Filme.formatarDuracaoEmTexto(filme.duracao);
+
         filmeElement.innerHTML = `
             <div class="movie-card-header">
                 <h3>${filme.titulo}</h3>
@@ -24,7 +26,7 @@ function renderizarFilmes() {
             <p><strong>Gênero:</strong> ${filme.genero}</p>
             <p><strong>Estúdio:</strong> ${filme.estudio}</p>
             <p><strong>Ano:</strong> ${filme.anoDeLancamento}</p>
-            <p><strong>Duração:</strong> ${filme.duracao} minutos</p>
+            <p><strong>Duração:</strong> ${duracaoFormatada}</p>
             <button type="button" class="btn-delete" data-index="${indice}">
                 <img src="images/icons8-trash-48.png" alt="Excluir" class="btn-delete-icon" />
                 <span>Excluir</span>

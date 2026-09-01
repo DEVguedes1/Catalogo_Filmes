@@ -21,7 +21,7 @@ form.addEventListener("submit", (event) => {
     const genero = inputGenero.value.trim();
     const estudio = inputEstudio.value.trim();
     const anoDeLancamento = parseInt(inputAnoDeLancamento.value, 10);
-    const duracao = parseInt(inputDuracao.value, 10);
+    const duracaoEmMinutos = Filme.parseDuracaoEmMinutos(inputDuracao.value);
     const nota = parseFloat(inputNota.value);
 
     if (
@@ -31,17 +31,16 @@ form.addEventListener("submit", (event) => {
         Number.isNaN(anoDeLancamento) ||
         anoDeLancamento < 1888 ||
         anoDeLancamento > 2030 ||
-        Number.isNaN(duracao) ||
-        duracao < 1 ||
+        duracaoEmMinutos < 1 ||
         Number.isNaN(nota) ||
         nota < 0 ||
         nota > 10
     ) {
-        alert("Por favor, preencha todos os campos corretamente.");
+        alert("Por favor, preencha todos os campos corretamente. Use o formato HH:MM para a duração.");
         return;
     }
 
-    const novoFilme = new Filme(titulo, genero, estudio, anoDeLancamento, duracao, nota);
+    const novoFilme = new Filme(titulo, genero, estudio, anoDeLancamento, duracaoEmMinutos, nota);
 
     gerenciador.adicionarFilme(novoFilme);
     gerenciador.salvarNoLocalStorage();
