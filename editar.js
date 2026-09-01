@@ -1,118 +1,118 @@
 const gerenciador = new GerenciadorDeFilmes();
 
 const filmeSelect = document.getElementById("filme-select");
-
 const form = document.getElementById("edit-form");
-
 const titulo = document.getElementById("titulo");
-
 const genero = document.getElementById("genero");
-
 const estudio = document.getElementById("estudio");
-
 const ano = document.getElementById("ano");
-
 const duracao = document.getElementById("duracao");
-
 const nota = document.getElementById("nota");
 
+let filmeSelecionado = null;
+
+// Carrega os dados atuais do localStorage antes de popular o select e o formulário.
 gerenciador.carregarDoLocalStorage();
 
+// Monta as opções do select com os títulos dos filmes já cadastrados.
+function popularSelectFilmes() {
+    filmeSelect.innerHTML = '<option value="">Escolha um filme</option>';
 
-// Cria as opções de filmes no select
+    gerenciador.filmes.forEach((filme, indice) => {
+        const option = document.createElement("option");
+        option.value = String(indice);
+        option.textContent = filme.titulo;
+        filmeSelect.appendChild(option);
+    });
+}
 
-gerenciador.filmes.forEach((filme, indice) => {
-
-    const option = document.createElement("option");
-
-    option.value = indice;
-
-    option.textContent = filme.titulo;
-
-    filmeSelect.appendChild(option);
-
-});
-
-
-// Guarda o filme que o usuário escolher
-
-let filme = null;
-
-
-// Quando o usuário escolher um filme
-
-filmeSelect.addEventListener("change", () => {
-
-    const indice = filmeSelect.value;
-
-    if (indice === "") {
-        filme = null;
+// Preenche os campos do formulário com os dados do filme selecionado.
+function preencherFormulario(filme) {
+    if (!filme) {
         return;
     }
-
-    filme = gerenciador.filmes[parseInt(indice)];
-
-
-    // Preenche os campos com os dados atuais
 
     titulo.value = filme.titulo;
-
     genero.value = filme.genero;
-
     estudio.value = filme.estudio;
-
     ano.value = filme.anoDeLancamento;
-
     duracao.value = filme.duracao;
-
     nota.value = filme.nota;
+}
 
-});
-
-
-// Quando clicar em "Salvar Alterações"
-
-form.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-
-    // Verifica se algum filme foi escolhido
-
-    if (!filme) {
-
+// Atualiza o filme em memória e persiste no localStorage.
+function salvarAlteracaoDoFilme() {
+    if (!filmeSelecionado) {
         alert("Selecione um filme para editar!");
-
         return;
-
     }
 
+    const indiceSelecionado = Number.parseInt(filmeSelect.value, 10);
 
-    // Pega os novos valores
+    if (Number.isNaN(indiceSelecionado)) {
+        alert("Selecione um filme válido para continuar.");
+        return;
+    }
 
-    filme.titulo = titulo.value.trim();
+    const filmeAtualizado = {
+        titulo: titulo.value.trim(),
+        genero: genero.value.trim(),
+        estudio: estudio.value.trim(),
+        anoDeLancamento: Number.parseInt(ano.value, 10),
+        duracao: Number.parseInt(duracao.value, 10),
+        nota: Number.parseFloat(nota.value),
+    };
 
-    filme.genero = genero.value.trim();
+    if (
+        filmeAtualizado.titulo === "" ||
+        filmeAtualizado.genero === "" ||
+        filmeAtualizado.estudio === "" ||
+        Number.isNaN(filmeAtualizado.anoDeLancamento) ||
+        Number.isNaN(filmeAtualizado.duracao) ||
+        Number.isNaN(filmeAtualizado.nota)
+    ) {
+        alert("Preencha todos os campos corretamente antes de salvar.");
+        return;
+    }
 
-    filme.estudio = estudio.value.trim();
+    const filme = gerenciador.buscarFilmePorIndice(indiceSelecionado);
 
-    filme.anoDeLancamento = parseInt(ano.value);
+    if (!filme) {
+        alert("Filme não encontrado para edição.");
+        return;
+    }
 
-    filme.duracao = parseInt(duracao.value);
-
-    filme.nota = parseFloat(nota.value);
-
-
-    // Salva a alteração
+    filme.titulo = filmeAtualizado.titulo;
+    filme.genero = filmeAtualizado.genero;
+    filme.estudio = filmeAtualizado.estudio;
+    filme.anoDeLancamento = filmeAtualizado.anoDeLancamento;
+    filme.duracao = filmeAtualizado.duracao;
+    filme.nota = filmeAtualizado.nota;
 
     gerenciador.salvarNoLocalStorage();
 
+    alert("Filme alterado com sucesso!");
+    console.log("Filme atualizado:", filme);
+}
 
-    alert("Filme Alterado com sucesso");
+// Quando o usuário escolher um filme no select, o formulário é preenchido.
+filmeSelect.addEventListener("change", () => {
+    const indice = filmeSelect.value;
 
+    if (indice === "") {
+        filmeSelecionado = null;
+        form.reset();
+        return;
+    }
 
-    console.log("Filme atualizado:");
-
-    console.log(filme);
-
+    filmeSelecionado = gerenciador.buscarFilmePorIndice(Number.parseInt(indice, 10));
+    preencherFormulario(filmeSelecionado);
 });
+
+// Ao enviar o formulário, salva a alteração no catálogo.
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    salvarAlteracaoDoFilme();
+});
+
+popularSelectFilmes();

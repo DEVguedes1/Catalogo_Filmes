@@ -1,17 +1,5 @@
-Filme.prototype.toJSON = function() {
-    return {
-        titulo: this.titulo,
-        genero: this.genero,
-        estudio: this.estudio,
-        anoDeLancamento: this.anoDeLancamento,
-        duracao: this.duracao,
-        nota: this.nota
-    };
-}
-
 const gerenciador = new GerenciadorDeFilmes();
-const form = document.getElementById('movie-form');
-const movieListContainer = document.getElementById('movie-list');
+const form = document.getElementById("movie-form");
 
 const inputTitulo = document.getElementById("titulo");
 const inputGenero = document.getElementById("genero");
@@ -19,53 +7,48 @@ const inputEstudio = document.getElementById("estudio");
 const inputAnoDeLancamento = document.getElementById("ano");
 const inputDuracao = document.getElementById("duracao");
 const inputNota = document.getElementById("nota");
-const btnAdicionar = document.getElementById("btn-adicionar");
 
-function renderizarFilmes() {
- // 
-}
-
-document.addEventListener('DOMContentLoaded', () => {
+// Carrega os filmes do armazenamento antes de qualquer operação de cadastro.
+document.addEventListener("DOMContentLoaded", () => {
     gerenciador.carregarDoLocalStorage();
-    //renderizarFilmes();
 });
 
+// Valida e registra um novo filme no catálogo.
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const titulo = inputTitulo.value.trim();
     const genero = inputGenero.value.trim();
     const estudio = inputEstudio.value.trim();
-    const anoDeLancamento = parseInt(inputAnoDeLancamento.value);
-    const duracao = parseInt(inputDuracao.value);
+    const anoDeLancamento = parseInt(inputAnoDeLancamento.value, 10);
+    const duracao = parseInt(inputDuracao.value, 10);
     const nota = parseFloat(inputNota.value);
 
-    if (titulo === "" || 
-        genero === "" || 
-        estudio === "" || 
-        anoDeLancamento <1888 ||
-        anoDeLancamento > 2030 || 
+    if (
+        titulo === "" ||
+        genero === "" ||
+        estudio === "" ||
+        Number.isNaN(anoDeLancamento) ||
+        anoDeLancamento < 1888 ||
+        anoDeLancamento > 2030 ||
+        Number.isNaN(duracao) ||
         duracao < 1 ||
+        Number.isNaN(nota) ||
         nota < 0 ||
-        nota > 10 ||
-        isNaN(duracao) || 
-        isNaN(nota)) {
-            alert("Por favor, preencha todos os campos corretamente.");
-            return;
+        nota > 10
+    ) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
     }
 
     const novoFilme = new Filme(titulo, genero, estudio, anoDeLancamento, duracao, nota);
 
     gerenciador.adicionarFilme(novoFilme);
     gerenciador.salvarNoLocalStorage();
-    
-    console.log("Filme cadastrado:");
-    console.log(novoFilme);
 
-    console.log("Lista atual:");
-    console.log(gerenciador.filmes);
+    console.log("Filme cadastrado:", novoFilme);
+    console.log("Lista atual:", gerenciador.filmes);
 
     form.reset();
-    //renderizarFilmes();
-
+    alert("Filme cadastrado com sucesso!");
 });
