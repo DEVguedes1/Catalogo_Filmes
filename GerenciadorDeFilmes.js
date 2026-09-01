@@ -66,5 +66,25 @@ class GerenciadorDeFilmes{
 
     listarFilmes(){
     }
-    
+
+    excluirFilmes(titulo) {
+        if (this.#filmes.length === 0) {
+            console.log("Não há filmes para excluir.");
+            return false;
+        }
+
+        const quantidadeAntes = this.#filmes.length;
+
+        this.#filmes = this.#filmes.filter(
+            filme => filme.titulo.toLowerCase() !== titulo.toLowerCase()
+        );
+
+        if (this.#filmes.length < quantidadeAntes) {
+            console.log(`Filme com título "${titulo}" excluído com sucesso.`);
+            return true;
+        }
+
+        console.log(`Nenhum filme com o título "${titulo}" foi encontrado.`);
+        return false;
+    }
 }

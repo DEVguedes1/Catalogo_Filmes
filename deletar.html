@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>CineLog - Deletar Filme</title>
+    
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    
+    <body>
+        <header class="topbar">
+        <button class="menu-button" id="menu-button">☰</button>
+
+        <a href="index.html" class="logo"> CineLog </a>
+        </header>
+    
+        <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span>CineLog</span>
+        </div>
+    
+        <nav>
+            <a href="index.html" class="nav-link">
+            🏠
+            <span>Home</span>
+            </a>
+    
+            <a href="cadastro.html" class="nav-link">
+            ➕
+            <span>Cadastrar</span>
+            </a>
+    
+            <a href="#" class="nav-link">
+            ✏️
+            <span>Editar</span>
+            </a>
+    
+            <a href="deletar.html" class="nav-link">
+            ❌
+            <span>Excluir</span>
+            </a>
+    
+            <div class="separator"></div>
+    
+            <a href="#" class="nav-link">
+            ⭐
+            <span>Favoritos</span>
+            </a>
+    
+            <a href="#" class="nav-link">
+            🎬
+            <span>Filmes</span>
+            </a>
+    
+            <a href="#" class="nav-link">
+            ℹ️
+            <span>Sobre</span>
+            </a>
+        </nav>
+        </aside>
+    
+        <main class="main-content">
+        <section class="page-header">
+            <div>
+                <h1>Deletar Filme</h1>
+                <p>Remova um filme do seu catálogo.</p>
+            </div>
+        </section>
+
+        <section class="deletion-form">
+            <form id="movie-form">
+                <label for="movie-title">Título do Filme:</label>
+                <input type="text" id="titulo" name="movie-title" required />
+    
+                <button type="submit" class="btn-primary">Deletar Filme</button>
+            </form>
+            <div id="mensagemExclusao" class="mensagem-exclusao">
+                <h2>Filme excluído!</h2>
+                <p id="textoMensagem"></p>
+                <button id="fecharMensagem">OK</button>
+                
+            </div>
+        </section>
+    </main>
+    
+    <script src="Filme.js"></script>
+    <script src="GerenciadorDeFilmes.js"></script>
+    <script src="deletar.js"></script>
+
+    <script>
+      const menuButton = document.getElementById("menu-button");
+      const sidebar = document.getElementById("sidebar");
+
+      menuButton.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+      });
+    </script>
+    </body>
+</html>
