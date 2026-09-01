@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineLog - Sobre</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <button class="menu-button" id="menu-button">☰</button>
+      <a href="index.html" class="logo-wrap" aria-label="CineLog home">
+        <img src="images/logo-cinelog.png" alt="Logo CineLog" class="brand-logo" />
+        <span class="logo">CineLog</span>
+      </a>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span>CineLog</span>
+      </div>
+
+      <nav>
+        <a href="index.html" class="nav-link">
+          <img src="images/icons8-home-48.png" alt="Home" class="nav-icon" />
+          <span>Home</span>
+        </a>
+
+        <a href="cadastro.html" class="nav-link">
+          <img src="images/icons8-check-all-48.png" alt="Cadastrar" class="nav-icon" />
+          <span>Cadastrar</span>
+        </a>
+
+        <a href="editar.html" class="nav-link">
+          <img src="images/icons8-edit-pencil-48 (1).png" alt="Editar" class="nav-icon" />
+          <span>Editar</span>
+        </a>
+
+        <div class="separator"></div>
+
+        <a href="sobre.html" class="nav-link active">
+          <img src="images/icons8-info-48.png" alt="Sobre" class="nav-icon" />
+          <span>Sobre</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="about-page">
+      <section class="about-hero">
+        <div>
+          <p class="section-tag">Sobre nós</p>
+          <h1>Uma equipe apaixonada por cinema e tecnologia.</h1>
+          <p>
+            O CineLog nasceu da ideia de criar um espaço pessoal para guardar os filmes
+            que marcaram nossa jornada, seja por emoção, nostalgia ou por aquela cena que
+            fica na memória para sempre. Aqui, a paixão por cinema se mistura com uma
+            experiência prática e moderna de organização.
+          </p>
+        </div>
+
+        <div class="about-hero-visual">
+          <img src="images/logo-cinelog.png" alt="Logo CineLog" />
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2>Quem somos</h2>
+
+        <div class="about-copy">
+          <p>
+            Somos uma equipe dedicada a criar experiências digitais que unem design,
+            funcionalidade e emoção. Nossa missão é transformar ideias em projetos
+            acessíveis, bonitos e úteis para pessoas que gostam de organizar sua vida e
+            suas paixões em um único lugar.
+          </p>
+          <p>
+            <strong>O CineLog</strong> foi pensado como um catálogo pessoal, mas também como
+            um reflexo do nosso gosto por filmes, histórias e a cultura cinematográfica.
+          </p>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2>Nossa equipe</h2>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="team-photo">
+              <img src="images/nicolas-foto.png" alt="Nicolas" />
+            </div>
+            <span class="team-role">Cadastro de filmes</span>
+            <h3>Nicolas</h3>
+            <p>Responsável por criar e validar o formulário de cadastro, além de estilizar a interface inicial do fluxo de criação.</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo">
+              <img src="images/adones.jpg" alt="Adones" />
+            </div>
+            <span class="team-role">Listagem de filmes</span>
+            <h3>Adones</h3>
+            <p>Foca na área de visualização dos filmes, nos cards e na apresentação responsiva da listagem.</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo">
+              <img src="images/vini.png" alt="Vini" />
+            </div>
+            <span class="team-role">Edição de filmes</span>
+            <h3>Vini</h3>
+            <p>Cuida da funcionalidade de edição, do formulário de atualização e da manutenção das informações do filme.</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo">
+              <img src="images/nycholas.jpeg" alt="Nycholas" />
+            </div>
+            <span class="team-role">Exclusão e armazenamento</span>
+            <h3>Nycholas</h3>
+            <p>Responsável pela exclusão dos filmes, pelo uso do localStorage e pela garantia de que os dados permaneçam salvos.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const menuButton = document.getElementById("menu-button");
+      const sidebar = document.getElementById("sidebar");
+
+      menuButton.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
