@@ -44,16 +44,41 @@ class GerenciadorDeFilmes {
             }
 
             dados.forEach((filmeData) => {
-                const filme = Filme.fromJSON(filmeData);
+                const filmeNormalizado = this.normalizarFilme(filmeData);
 
-                if (filme) {
-                    this.adicionarFilme(filme);
+                if (filmeNormalizado) {
+                    this.adicionarFilme(filmeNormalizado);
                 }
             });
         } catch (erro) {
             console.error("Erro ao carregar filmes do localStorage:", erro);
             this.#filmes = [];
         }
+    }
+
+    // Garante que qualquer entrada vinda do localStorage tenha campos válidos.
+    normalizarFilme(filmeData) {
+        if (!filmeData || typeof filmeData !== "object") {
+            return null;
+        }
+
+        const titulo = String(filmeData.titulo ?? "Título não informado").trim() || "Título não informado";
+        const genero = String(filmeData.genero ?? "Gênero não informado").trim() || "Gênero não informado";
+        const estudio = String(filmeData.estudio ?? "Estúdio não informado").trim() || "Estúdio não informado";
+        const anoDeLancamento = Number(filmeData.anoDeLancamento);
+        const duracao = Filme.parseDuracaoEmMinutos(filmeData.duracao);
+        const nota = Number(filmeData.nota);
+
+        const filme = new Filme(
+            titulo,
+            genero,
+            estudio,
+            Number.isFinite(anoDeLancamento) ? anoDeLancamento : 0,
+            Number.isFinite(duracao) ? duracao : 0,
+            Number.isFinite(nota) ? nota : 0
+        );
+
+        return filme;
     }
 
     // Adiciona um filme novo, validando se ele é uma instância da classe Filme.

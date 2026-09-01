@@ -16,16 +16,21 @@ function renderizarFilmes() {
         const filmeElement = document.createElement("article");
         filmeElement.classList.add("movie-card");
 
-        const duracaoFormatada = Filme.formatarDuracaoEmTexto(filme.duracao);
+        const titulo = filme?.titulo ?? "Título não informado";
+        const genero = filme?.genero ?? "Gênero não informado";
+        const estudio = filme?.estudio ?? "Estúdio não informado";
+        const anoDeLancamento = filme?.anoDeLancamento ?? "--";
+        const nota = filme?.nota ?? 0;
+        const duracaoFormatada = Filme.formatarDuracaoEmTexto(filme?.duracao ?? 0);
 
         filmeElement.innerHTML = `
             <div class="movie-card-header">
-                <h3>${filme.titulo}</h3>
-                <span class="movie-rating">⭐ ${filme.nota}</span>
+                <h3>${titulo}</h3>
+                <span class="movie-rating">⭐ ${nota}</span>
             </div>
-            <p><strong>Gênero:</strong> ${filme.genero}</p>
-            <p><strong>Estúdio:</strong> ${filme.estudio}</p>
-            <p><strong>Ano:</strong> ${filme.anoDeLancamento}</p>
+            <p><strong>Gênero:</strong> ${genero}</p>
+            <p><strong>Estúdio:</strong> ${estudio}</p>
+            <p><strong>Ano:</strong> ${anoDeLancamento}</p>
             <p><strong>Duração:</strong> ${duracaoFormatada}</p>
             <button type="button" class="btn-delete" data-index="${indice}">
                 <img src="images/icons8-trash-48.png" alt="Excluir" class="btn-delete-icon" />
